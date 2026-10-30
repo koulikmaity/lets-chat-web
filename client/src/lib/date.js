@@ -1,0 +1,3 @@
+export const time = date => date && !Number.isNaN(new Date(date).getTime()) ? new Date(date).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : '';
+export const dateKey = date => date && !Number.isNaN(new Date(date).getTime()) ? new Date(date).toDateString() : null;
+export const dayLabel = date => { if (!dateKey(date)) return 'Unknown date'; const d = new Date(date); const today = new Date(); const yesterday = new Date(today); yesterday.setDate(today.getDate() - 1); return dateKey(d) === dateKey(today) ? 'Today' : dateKey(d) === dateKey(yesterday) ? 'Yesterday' : d.toLocaleDateString([], { month: 'long', day: 'numeric', year: 'numeric' }); };
